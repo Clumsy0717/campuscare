@@ -1,66 +1,259 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# CampusCare
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Student Service Request and Management System**
 
-## About Laravel
+CampusCare is a web-based application developed to simplify the process of requesting and managing student services. It provides a centralized platform where students can submit service requests, monitor their progress, and receive notifications about status updates.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The system also includes an administrative dashboard for managing requests, reviewing student information, and monitoring daily service activity.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Built with Laravel, PHP, MySQL, and Blade, CampusCare aims to improve the organization, accessibility, and efficiency of student support services.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Features
 
-## Learning Laravel
+### Student Portal
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Account Registration:** Students can create accounts with automatically generated Student IDs.
+- **Authentication:** Secure login using an email address or Student ID.
+- **Student Dashboard:** Access account details and student information.
+- **Service Requests:** Submit requests under different service categories.
+- **Request History:** View submitted requests, statuses, and administrative remarks.
+- **Notifications:** Receive in-app notifications when request statuses are updated.
+- **Profile Management:** Update personal account information.
+- **Password Management:** Change account passwords and request password resets.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Administrative Portal
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Admin Dashboard:** View an overview of service requests and system activity.
+- **Request Management:** Review and manage student service requests.
+- **Status Management:** Update requests as Pending, In Progress, Completed, or Rejected.
+- **Administrative Remarks:** Provide feedback and additional information on requests.
+- **Student Management:** View registered student accounts.
+- **Daily Activity Monitoring:** Track the number of unique students submitting requests each day.
+- **Request Statistics:** Monitor request counts and status summaries.
 
-## Laravel Sponsors
+## Service Categories
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+CampusCare currently supports five service request categories:
 
-### Premium Partners
+| Category | Description |
+|---|---|
+| General Inquiry | Questions about school services and general concerns |
+| Document Request | Requests related to school documents |
+| Technical Support | Reports of technical problems and system issues |
+| Student Support | Requests for student-related assistance |
+| Facilities and Maintenance | Reports concerning school facilities and maintenance |
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Technology Stack
 
-## Contributing
+| Technology | Purpose |
+|---|---|
+| Laravel | Backend framework and application logic |
+| PHP | Server-side programming |
+| MySQL / MariaDB | Relational database |
+| Blade | Server-side template engine |
+| HTML5 | Application structure |
+| CSS3 | User interface styling |
+| JavaScript | Client-side interactions |
+| Composer | PHP dependency management |
+| Node.js / npm | Frontend dependency management |
+| XAMPP | Local development environment |
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Installation
 
-## Code of Conduct
+### Prerequisites
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Ensure the following are installed:
 
-## Security Vulnerabilities
+- PHP 8.2 or a compatible version
+- Composer
+- MySQL or MariaDB
+- Node.js and npm
+- Git
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Clumsy0717/campuscare.git
+cd campuscare
+```
+
+### 2. Install Dependencies
+
+```bash
+composer install
+npm install
+```
+
+### 3. Configure the Environment
+
+Create an environment configuration file.
+
+For Windows Command Prompt:
+
+```cmd
+copy .env.example .env
+```
+
+Generate the application key:
+
+```bash
+php artisan key:generate
+```
+
+### 4. Configure the Database
+
+Create a MySQL database named `campuscare`.
+
+Update the database configuration in `.env`:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=campuscare
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Modify the credentials according to your local database configuration.
+
+### 5. Run Database Migrations
+
+For a new installation using an empty database:
+
+```bash
+php artisan migrate
+```
+
+This creates the required database tables.
+
+### 6. Configure Email
+
+For local password reset testing, configure Laravel to write emails to the application log:
+
+```env
+MAIL_MAILER=log
+```
+
+Clear the configuration cache:
+
+```bash
+php artisan config:clear
+```
+
+Password reset messages will be available in `storage/logs/laravel.log`.
+
+A valid email delivery service is required for sending emails to actual users.
+
+### 7. Build Frontend Assets
+
+```bash
+npm run build
+```
+
+### 8. Start the Application
+
+```bash
+php artisan serve
+```
+
+Access the application at:
+
+`http://127.0.0.1:8000`
+
+## Application Workflow
+
+### Student Workflow
+
+1. Register an account and receive an automatically generated Student ID.
+2. Log in using an email address or Student ID.
+3. Submit a service request by selecting a category and providing the required information.
+4. Monitor the request through the Request History page.
+5. Receive an in-app notification when an administrator updates the request.
+6. Review the updated status and any administrative remarks.
+
+### Administrator Workflow
+
+1. Log in using an authorized administrator account.
+2. Access the administrative dashboard.
+3. Review submitted student service requests.
+4. Update request statuses and provide remarks.
+5. Manage registered student information.
+6. Monitor daily request activity and overall request statistics.
+
+## Project Structure
+
+```text
+campuscare/
+├── app/
+│   ├── Http/
+│   │   └── Controllers/
+│   ├── Models/
+│   └── Notifications/
+├── bootstrap/
+├── config/
+├── database/
+│   └── migrations/
+├── public/
+│   └── images/
+│       └── branding/
+├── resources/
+│   └── views/
+│       ├── admin/
+│       ├── auth/
+│       ├── layouts/
+│       ├── student/
+│       ├── dashboard.blade.php
+│       └── home.blade.php
+├── routes/
+│   ├── auth.php
+│   └── web.php
+├── storage/
+├── .env.example
+├── .gitignore
+├── artisan
+├── composer.json
+├── package.json
+└── README.md
+```
+
+## Security
+
+CampusCare uses Laravel's security features, including password hashing, CSRF protection, authentication middleware, server-side validation, and protected routes.
+
+The application provides separate student and administrative interfaces to support role-based access.
+
+Sensitive information, including environment variables, database credentials, and private student records, should never be committed to the repository.
+
+## Development Status
+
+**Status: Functional — Local Development**
+
+The application currently includes student registration, authentication, service request management, request tracking, in-app notifications, profile management, and administrative reporting.
+
+The system is intended for local development and testing. Additional configuration, testing, and security review are required before public deployment.
+
+## Planned Improvements
+
+- Email notifications for service request updates
+- Advanced request search and filtering
+- Downloadable administrative reports
+- Expanded dashboard analytics
+- Additional student service categories
+- Production deployment and hosting
+
+## Developer
+
+**Gunther Lee Ordinario**
+
+GitHub: [Clumsy0717](https://github.com/Clumsy0717)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License.
+
+See the [LICENSE](LICENSE) file for details.
+
+---
+
+Copyright © 2026 CampusCare.
