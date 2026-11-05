@@ -1,0 +1,48 @@
+
+# PHP / PHPUnit
+/.phpunit.cache
+.phpunit.result.cache
+.phpactor.json
+
+# Dependencies
+/node_modules
+/vendor
+
+# Frontend build
+/public/build
+/public/hot
+/public/storage
+
+# Laravel storage
+/storage/*.key
+/storage/pail
+/storage/logs/*
+!/storage/logs/.gitignore
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Authentication credentials
+/auth.json
+
+# Local database files
+*.sqlite
+*.sqlite-journal
+*.sql
+
+# Development tools
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed
+
+# Homestead
+Homestead.json
+Homestead.yaml
+
+# Debug logs
+npm-debug.log
+yarn-error.log

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240"><g transform="translate(20 15) scale(1.05)">
+ <path d="M16 50 L100 10 L184 50 L100 90 Z" fill="#10243E"/>
+ <path d="M45 75 Q100 107 155 75 L155 96 Q100 129 45 96 Z" fill="#10243E"/>
+ <path d="M181 54 L181 110" stroke="#10243E" stroke-width="7" stroke-linecap="round"/><circle cx="181" cy="117" r="8" fill="#10243E"/>
+ <text x="25" y="180" font-family="DejaVu Sans, Arial, sans-serif" font-size="103" font-weight="bold" letter-spacing="-20" fill="#10243E">C</text>
+ <text x="94" y="180" font-family="DejaVu Sans, Arial, sans-serif" font-size="103" font-weight="bold" fill="#10243E">C</text>
+ <path d="M28 179 Q101 217 169 171" stroke="#10243E" stroke-width="9" fill="none" stroke-linecap="round"/>
+ </g></svg>

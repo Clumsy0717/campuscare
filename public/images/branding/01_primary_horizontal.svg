@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="300" viewBox="0 0 1300 300"><g transform="translate(25 30) scale(1.13)">
+ <path d="M16 50 L100 10 L184 50 L100 90 Z" fill="#10243E"/>
+ <path d="M45 75 Q100 107 155 75 L155 96 Q100 129 45 96 Z" fill="#10243E"/>
+ <path d="M181 54 L181 110" stroke="#10243E" stroke-width="7" stroke-linecap="round"/><circle cx="181" cy="117" r="8" fill="#10243E"/>
+ <text x="25" y="180" font-family="DejaVu Sans, Arial, sans-serif" font-size="103" font-weight="bold" letter-spacing="-20" fill="#10243E">C</text>
+ <text x="94" y="180" font-family="DejaVu Sans, Arial, sans-serif" font-size="103" font-weight="bold" fill="#2F80C9">C</text>
+ <path d="M28 179 Q101 217 169 171" stroke="#2F80C9" stroke-width="9" fill="none" stroke-linecap="round"/>
+ </g><text x="275" y="188" font-family="DejaVu Sans, Arial, sans-serif" font-weight="bold" font-size="112" letter-spacing="-3"><tspan fill="#10243E">Campus</tspan><tspan fill="#2F80C9">Care</tspan></text><text x="280" y="236" font-family="DejaVu Sans, Arial" font-size="27" letter-spacing="6" fill="#10243E">CAMPUS SERVICE REQUEST SYSTEM</text></svg>
