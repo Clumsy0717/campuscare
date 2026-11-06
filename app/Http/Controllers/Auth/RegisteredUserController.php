@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Rules\ValidRecaptcha;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
@@ -23,8 +23,13 @@ class RegisteredUserController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        // Validate registration fields and Google reCAPTCHA.
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+            ],
 
             'email' => [
                 'required',
@@ -42,14 +47,20 @@ class RegisteredUserController extends Controller
                     ->numbers()
                     ->symbols(),
             ],
+
+            // Google reCAPTCHA verification
+            'g-recaptcha-response' => [
+                'required',
+                new ValidRecaptcha(),
+            ],
         ]);
 
-        
+        // Generate a unique Student ID.
         $user = DB::transaction(function () use ($validated) {
 
             $year = now()->year;
 
-            // Create the year's sequence record if it doesn't exist.
+            // Create the sequence record if it doesn't exist.
             DB::table('student_id_sequences')->insertOrIgnore([
                 'year' => $year,
                 'last_number' => 0,
@@ -57,20 +68,21 @@ class RegisteredUserController extends Controller
                 'updated_at' => now(),
             ]);
 
-            // Lock the sequence row to prevent duplicate IDs.
+            // Lock the sequence to prevent duplicate IDs.
             $sequence = DB::table('student_id_sequences')
                 ->where('year', $year)
                 ->lockForUpdate()
                 ->first();
 
-            // Find the highest existing ID for this year.
+            // Find the highest existing Student ID.
             $existingMax = User::where(
                 'student_id',
                 'like',
                 $year . '-%'
-            )->get(['student_id'])
-            ->map(fn ($user) => (int) substr($user->student_id, 5))
-            ->max() ?? 0;
+            )
+                ->get(['student_id'])
+                ->map(fn ($user) => (int) substr($user->student_id, 5))
+                ->max() ?? 0;
 
             // Generate the next available number.
             $nextNumber = max(
@@ -91,7 +103,7 @@ class RegisteredUserController extends Controller
                 STR_PAD_LEFT
             );
 
-            // Update the sequence.
+            // Update the Student ID sequence.
             DB::table('student_id_sequences')
                 ->where('year', $year)
                 ->update([
@@ -108,12 +120,12 @@ class RegisteredUserController extends Controller
             ]);
         });
 
-
+        // Trigger Laravel's registered event.
         event(new Registered($user));
 
+        // Automatically log in the new student.
         Auth::login($user);
 
         return redirect()->route('home');
     }
-    
 }

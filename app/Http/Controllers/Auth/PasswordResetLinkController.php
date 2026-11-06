@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Rules\ValidRecaptcha;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class PasswordResetLinkController extends Controller
 {
     /**
-     * Display the password reset link request view.
+     * Display the password reset request page.
      */
     public function create(): View
     {
@@ -20,26 +20,35 @@ class PasswordResetLinkController extends Controller
     }
 
     /**
-     * Handle an incoming password reset link request.
-     *
-     * @throws ValidationException
+     * Handle the password reset link request.
      */
     public function store(Request $request): RedirectResponse
     {
+        // Validate email and Google reCAPTCHA first.
         $request->validate([
-            'email' => ['required', 'email'],
+            'email' => [
+                'required',
+                'email',
+            ],
+
+            'g-recaptcha-response' => [
+                'required',
+                new ValidRecaptcha(),
+            ],
         ]);
 
-        // We will send the password reset link to this user. Once we have attempted
-        // to send the link, we will examine the response then see the message we
-        // need to show to the user. Finally, we'll send out a proper response.
+        // Send the password reset link.
         $status = Password::sendResetLink(
             $request->only('email')
         );
 
-        return $status == Password::RESET_LINK_SENT
-                    ? back()->with('status', __($status))
-                    : back()->withInput($request->only('email'))
-                        ->withErrors(['email' => __($status)]);
+        // Return success or error message.
+        return $status === Password::RESET_LINK_SENT
+            ? back()->with('status', __($status))
+            : back()
+                ->withInput($request->only('email'))
+                ->withErrors([
+                    'email' => __($status),
+                ]);
     }
 }

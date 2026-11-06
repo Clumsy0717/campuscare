@@ -471,6 +471,18 @@
 
                     </div>
 
+                    <!-- Google reCAPTCHA -->
+                    <div class="form-group">
+                        <div
+                            class="g-recaptcha"
+                            data-sitekey="{{ config('services.recaptcha.site_key') }}"
+                        ></div>
+
+                        @error('g-recaptcha-response')
+                            <span class="field-error">{{ $message }}</span>
+                        @enderror
+                    </div>
+
                     <button type="submit" class="submit-button">
                         Log In
                     </button>
@@ -517,6 +529,6 @@
             );
         }
     </script>
-
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>
